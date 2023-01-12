@@ -1,12 +1,10 @@
 import db from "../config/config.ts";
 import type { Comment } from "../types/comment.ts";
 
-export async function createComment(comment: Comment): Promise<boolean> {
-  return Boolean(
-    await db.setnx(
-      `comment:${comment.userName}:${comment.site}`,
-      comment.commentText,
-    ),
+export async function createComment(comment: Comment) {
+  await db.set(
+    `comment:${comment.userName}:${comment.site}`,
+    JSON.stringify(comment),
   );
 }
 
