@@ -1,6 +1,8 @@
 !.gitignore
 
-/.vim
+.vim
+.vscode
 *.swp
-
-/back/deno.lock
+dump.rdb
+.env
+deno.lock

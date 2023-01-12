@@ -8,6 +8,7 @@
     "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.0.1",
     "redis": "https://deno.land/x/redis@v0.29.0/mod.ts",
     "djwt": "https://deno.land/x/djwt@v2.8/mod.ts",
-    "sha256": "https://deno.land/x/sha256@v1.0.2/mod.ts"
+    "sha256": "https://deno.land/x/sha256@v1.0.2/mod.ts",
+    "dotenv": "https://deno.land/x/dotenv@v3.2.0/load.ts"
   }
 }

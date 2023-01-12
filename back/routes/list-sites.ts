@@ -7,8 +7,9 @@ export const handler: Handlers = {
     const jwt = new URL(req.url).searchParams.get("token");
     const site = new URL(req.url).searchParams.get("site");
 
-    if (site && jwt && (await verifyKey(jwt)))
+    if (site && jwt && (await verifyKey(jwt))) {
       return Response.json(await listBySite(site));
+    }
     return Response.json({ error: "Invalid credentials" }, { status: 403 });
   },
 };
