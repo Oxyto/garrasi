@@ -8,6 +8,10 @@ export async function createComment(comment: Comment) {
   );
 }
 
+export async function deleteComment(commentKey: string) {
+  await db.del(commentKey)
+}
+
 export async function getComments(comments: string[]): Promise<Comment[]> {
   if (comments.length === 0) return [];
 
