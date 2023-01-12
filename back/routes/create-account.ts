@@ -7,11 +7,18 @@ import type { UserAccount } from "../types/user.ts";
 export const handler: Handlers = {
   async POST(req: Request) {
     const user: UserAccount = await req.json();
-    const key = await getKey();
+    const key: CryptoKey = await getKey();
 
     if (await createUser(user)) {
+      const token = await create(
+        { alg: "HS256", typ: "JWT" },
+        { userName: user.userName },
+        key,
+      );
+
+      console.log(token);
       return Response.json({
-        token: await create({ alg: "HS256" }, { userName: user.userName }, key),
+        token: token,
       });
     }
     return Response.json({ error: "Account already exists." }, { status: 409 });

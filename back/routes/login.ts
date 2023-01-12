@@ -11,7 +11,9 @@ export const handler: Handlers = {
 
     if (await isUserValid(user)) {
       return Response.json({
-        token: await create({ alg: "HS256" }, { userName: user.userName }, key),
+        token: await create({ alg: "HS256", typ: "JWT" }, {
+          userName: user.userName,
+        }, key),
       });
     }
     return Response.json({ error: "Account already exists." });
