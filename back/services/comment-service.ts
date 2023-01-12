@@ -4,8 +4,15 @@ import type { Comment } from "../types/comment.ts";
 export async function createComment(comment: Comment) {
   await db.set(
     `comment:${comment.userName}:${comment.site}`,
-    JSON.stringify(comment),
+    JSON.stringify(comment)
   );
+}
+
+export async function deleteComment(
+  commentKey: string | null
+): Promise<boolean> {
+  if (commentKey) return Boolean(await db.del(commentKey));
+  return false;
 }
 
 export async function getComments(comments: string[]): Promise<Comment[]> {
@@ -22,7 +29,7 @@ export async function listComments(
   next: number,
   count: number,
   userName: string,
-  site: string,
+  site: string
 ) {
   return await db.scan(next, {
     pattern: `comment:${userName || "*"}:${site}*`,
