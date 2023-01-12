@@ -21,7 +21,7 @@ export const handler: Handlers = {
           ),
         });
       }
-      return Response.json({ error: "Invalid credentials" }, { status: 401 });
+      return Response.json({ error: "Invalid credentials" }, { status: 403 });
     } catch (error) {
       console.error(error);
       return Response.json({ error: "Invalid body" }, { status: 400 });

@@ -6,7 +6,7 @@ export const handler: Handlers = {
   async POST(req: Request) {
     try {
       const jwt = new URL(req.url).searchParams.get("token");
-      const commentKeys = (await req.json()) as string[];
+      const commentKeys: string[] = await req.json();
 
       if (jwt && (await verifyKey(jwt))) {
         return Response.json(await getComments(commentKeys));

@@ -7,10 +7,11 @@ import type { Comment } from "../types/comment.ts";
 export const handler: Handlers = {
   async POST(req: Request) {
     try {
-      const [token, comment] = (await req.json()) as [string, Comment];
+      const token = new URL(req.url).searchParams.get("token");
+      const comment: Comment = await req.json();
       const key = await getKey();
 
-      if (await verify(token, key)) {
+      if (token && (await verify(token, key))) {
         await createComment(comment);
         return new Response("OK");
       }
