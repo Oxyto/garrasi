@@ -5,12 +5,14 @@ export async function createComment(comment: Comment): Promise<boolean> {
   return Boolean(
     await db.setnx(
       `comment:${comment.userName}:${comment.site}`,
-      comment.commentText
-    )
+      comment.commentText,
+    ),
   );
 }
 
 export async function getComments(comments: string[]): Promise<Comment[]> {
+  if (comments.length === 0) return [];
+
   const dbResponse = await db.mget(...comments);
 
   return dbResponse
@@ -22,10 +24,10 @@ export async function listComments(
   next: number,
   count: number,
   userName: string,
-  site: string
+  site: string,
 ) {
   return await db.scan(next, {
-    pattern: `comment:${userName || '*'}:${site}*`,
+    pattern: `comment:${userName || "*"}:${site}*`,
     count: count,
   });
 }

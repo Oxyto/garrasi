@@ -3,11 +3,11 @@ import { sha256 } from "sha256";
 import type { UserAccount } from "../types/user.ts";
 
 export async function createUser(user: UserAccount): Promise<boolean> {
-  const userToDB = JSON.stringify({
+  const userToDB = {
     userName: user.userName,
     email: user.email,
-    password: sha256(user.password),
-  });
+    password: sha256(user.password, "utf8", "hex"),
+  };
 
   return Boolean(
     await db.setnx(`account:${user.userName}`, JSON.stringify(userToDB)),
@@ -19,7 +19,7 @@ export async function isUserValid(user: UserAccount): Promise<boolean> {
 
   if (fetchUser) {
     const fetchPassword = JSON.parse(fetchUser).password;
-    const password = sha256(user.password);
+    const password = sha256(user.password, "utf8", "hex");
 
     return fetchPassword === password;
   }

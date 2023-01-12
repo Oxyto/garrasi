@@ -17,7 +17,6 @@ export const handler: Handlers = {
           key,
         );
 
-        console.log(token);
         return Response.json({
           token: token,
         });
