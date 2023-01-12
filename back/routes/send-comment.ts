@@ -6,13 +6,18 @@ import type { Comment } from "../types/comment.ts";
 
 export const handler: Handlers = {
   async POST(req: Request) {
-    const [token, comment] = (await req.json()) as [string, Comment];
-    const key = await getKey();
+    try {
+      const [token, comment] = (await req.json()) as [string, Comment];
+      const key = await getKey();
 
-    if (await verify(token, key)) {
-      await createComment(comment);
-      return new Response("OK");
+      if (await verify(token, key)) {
+        await createComment(comment);
+        return new Response("OK");
+      }
+      return Response.json({ error: "Invalid credentials" }, { status: 403 });
+    } catch (error) {
+      console.error(error);
+      return Response.json({ error: "Invalid body" }, { status: 400 });
     }
-    return Response.json({ error: "Invalid credentials" }, { status: 403 });
   },
 };

@@ -5,8 +5,8 @@ export async function createComment(comment: Comment): Promise<boolean> {
   return Boolean(
     await db.setnx(
       `comment:${comment.userName}:${comment.site}`,
-      comment.commentText
-    )
+      comment.commentText,
+    ),
   );
 }
 
