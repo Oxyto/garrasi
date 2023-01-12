@@ -5,8 +5,8 @@ export async function createComment(comment: Comment): Promise<boolean> {
   return Boolean(
     await db.setnx(
       `comment:${comment.userName}:${comment.site}`,
-      comment.commentText,
-    ),
+      comment.commentText
+    )
   );
 }
 
@@ -16,6 +16,6 @@ export async function getComments(comments: string[]): Promise<Comment[]> {
   return dbResponse.map((comment) => JSON.parse(comment ?? ""));
 }
 
-export async function listAllComments(): Promise<string[]> {
-  return (await db.scan(0, { pattern: `comment:*:*` }))[1];
+export async function listAllComments(next: number, count: number) {
+  return await db.scan(next, { pattern: `comment:*:*`, count: count });
 }
