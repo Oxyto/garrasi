@@ -38,11 +38,3 @@ export async function getUserByName(
   }
   return null;
 }
-
-export async function listBySite(site: string): Promise<string[]> {
-  return (await db.scan(0, { pattern: `comment:*:${site}` }))[1];
-}
-
-export async function listByUserName(userName: string): Promise<string[]> {
-  return (await db.scan(0, { pattern: `comment:${userName}:*` }))[1];
-}

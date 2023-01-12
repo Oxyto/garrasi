@@ -3,7 +3,7 @@ import { getComments } from "../services/comment-service.ts";
 import { verifyKey } from "../services/key-service.ts";
 
 export const handler: Handlers = {
-  async GET(req: Request) {
+  async POST(req: Request) {
     try {
       const jwt = new URL(req.url).searchParams.get("token");
       const commentKeys = (await req.json()) as string[];

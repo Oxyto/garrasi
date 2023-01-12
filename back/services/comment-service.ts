@@ -5,17 +5,27 @@ export async function createComment(comment: Comment): Promise<boolean> {
   return Boolean(
     await db.setnx(
       `comment:${comment.userName}:${comment.site}`,
-      comment.commentText,
-    ),
+      comment.commentText
+    )
   );
 }
 
 export async function getComments(comments: string[]): Promise<Comment[]> {
   const dbResponse = await db.mget(...comments);
 
-  return dbResponse.map((comment) => JSON.parse(comment ?? ""));
+  return dbResponse
+    .filter((comment) => comment !== null)
+    .map((comment) => JSON.parse(comment ?? "null"));
 }
 
-export async function listAllComments(next: number, count: number) {
-  return await db.scan(next, { pattern: `comment:*:*`, count: count });
+export async function listComments(
+  next: number,
+  count: number,
+  userName: string,
+  site: string
+) {
+  return await db.scan(next, {
+    pattern: `comment:${userName || '*'}:${site}*`,
+    count: count,
+  });
 }
