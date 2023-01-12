@@ -1,0 +1,6 @@
+!.gitignore
+
+/.vim
+*.swp
+
+/back/deno.lock
