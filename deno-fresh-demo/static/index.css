@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white;
+    height: 100vh;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: orange;
+    color: #fff;
+}
+
+.right img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+  
+.right button {
+  margin-right: 10px;
+  padding: 10px;
+  background-color: #fff;
+  color: orange;
+  border: none;
+  cursor: pointer;
+}
+
+.left button {
+    margin-right: 10px;
+    padding: 10px;
+    background-color: #fff;
+    color: orange;
+    border: none;
+    cursor: pointer;
+}
+
+.left select {
+  padding: 10px;
+  background-color: #fff;
+  color: orange;
+  border: none;
+  cursor: pointer;
+}
+
+#buttonsearch {
+    border: 1px solid red;
+    color:black;
+    background-color: white;
+    margin-top: 10%;
+    border-radius: 50px;
+    margin-left: 45%;
+}
+
+#create {
+    border: 1px solid red;
+    color:black;
+    background-color: white;
+    margin-top: 10%;
+    margin-left: 35%;
+    border-radius: 50px;
+}
+
+label {
+    width: 40%;
+    display: block;
+    float: left;
+    margin-left: 10%; 
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: stretch;
+    height: 100vh;
+}
+
+#filter {
+    float: left;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 25%;
+    overflow: hidden;
+    height: 90vh;
+    background-color: #FFC368;
+}
+
+#bodyarticle {
+    height: 90vh;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 75%;
+    overflow: scroll;
+}
+
+#article {
+    color: white;
+    background-color: wheat;
+    border:1px solid black;
+    width: 90%;
+    height: 50%;
+    margin: 0 auto;
+    margin-top:5%;
+    margin-bottom:5%;
+    padding-top: 2%;
+    padding-left: 2%;
+    position: relative;
+    border-radius: 50px;
+}
+
+#search {
+    height: 10vh;
+    padding-top: 2%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    background-color: grey;
+}
+
+#searchbar {
+    text-align: center;
+    width: 50%;
+    margin-right:auto;
+    margin-left:auto;
+    margin-bottom: 1%;
+    border-radius: 50px;
+    border:1px solid;
+}
+
+button {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+}
+
+button:hover {
+    background-color: rgba(223, 154, 18, 0.871);
+    color: black;
+}
+
+#navigate_prev {
+    display: inline-block;
+}
+
+p {
+    text-align: center;
+}
