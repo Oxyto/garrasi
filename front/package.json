@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "preact-router": "^4.1.0",
+    "react-router-dom": "^6.6.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.2.5"
+  }
+}
