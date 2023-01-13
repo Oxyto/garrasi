@@ -1,0 +1,83 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: orange;
+  color: #fff;
+}
+
+.right img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.right button {
+  margin-right: 10px;
+  padding: 10px;
+  background-color: #fff;
+  color: orange;
+  border: none;
+  cursor: pointer;
+}
+
+.left button {
+  margin-right: 10px;
+  padding: 10px;
+  background-color: #fff;
+  color: orange;
+  border: none;
+  cursor: pointer;
+}
+
+.left select {
+  padding: 10px;
+  background-color: #fff;
+  color: orange;
+  border: none;
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: #fff;
+}
+
+input {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-bottom: 2px solid orange;
+  font-size: 1.2rem;
+  width: 80%;
+}
+
+input:focus {
+  outline: none;
+  border-bottom: 2px solid orange;
+}
+
+Button {
+  background-color: orange;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+Button:hover {
+  background-color: #ffa500;
+}
+
+/* Path: garrasi/static/style.css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
