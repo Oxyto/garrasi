@@ -6,3 +6,4 @@
 dump.rdb
 .env
 deno.lock
+node_modules
